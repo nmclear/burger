@@ -13,13 +13,19 @@ var database_password = keys.database.password;
 var database_name = keys.database.name;
 
 // creating database connection.
-var connection = mysql.createConnection({
-  host: host_name,
-  port: port_number,
-  user: root_user,
-  password: database_password,
-  database: database_name
-});
+var connection;
+
+if(process.env.JAWSDB_URL){
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: host_name,
+    port: port_number,
+    user: root_user,
+    password: database_password,
+    database: database_name
+  });
+}
 
 // Make connection.
 connection.connect(function(err) {
