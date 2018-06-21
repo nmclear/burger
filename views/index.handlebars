@@ -1,6 +1,6 @@
-<h1>Burgers</h1>
+<h1>Burger It Up</h1>
 
-<h2>Get yo-self a burger.</h2>
+<h2>Get Yo-Self a Burger</h2>
 {{!-- list each burger not devoured --}}
 <ul>
   {{#each burgers}}
@@ -10,7 +10,7 @@
   {{/each}}
 </ul>
 
-<h2>Burgers devoured.</h2>
+<h2>Demolished Burgers</h2>
 {{!-- list each burger devoured --}}
 <ul>
   {{#each burgers}}
@@ -20,12 +20,12 @@
   {{/each}}
 </ul>
 
-<h2>Add a Burger</h2>
+<h2>Add Your Own Burger</h2>
 <form class="create-form">
   {{!-- burger name input --}}
   <div class="form-group">
-    <label for="burg">Burger Name:</label>
-    <input type="text" id="burg" name="name">
+    <label for="burg">Burger Name:</label><br>
+    <input type="text" id="burg" name="name" placeholder="type name here">
   </div>
 
   {{!-- Will call POST --}}
