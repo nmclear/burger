@@ -18,27 +18,35 @@ $(function(){
             data: newDevState
         }).then(
             function() {
-                //reloads the page to update the list.
+                //must reload the page to get the updated list.
                 location.reload();
             }
         );
     });
 
+    // on click of submit button it will post new burger
+    $('.create-form').on('submit', function(event){
+        event.preventDefault();
+
+        //new burger object data
+        var newBurger = {
+            // from text input in new burger form
+            burger_name: $('#burg').val().trim(),
+            //set to false since its newBurger and not devoured yet
+            devoured: 0
+        };
+
+        // Send the post request with newBurger data
+        $.ajax('api/burgers/',{
+            type: 'POST',
+            data: newBurger
+        }).then(
+            function(){
+                //must reload the page to get the updated list.
+                location.reload();
+            }
+        )
+    });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-})
+});
