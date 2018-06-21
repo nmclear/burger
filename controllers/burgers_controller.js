@@ -3,7 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 // import model
-var burger = require('../models/burger.js');
+// var burger = require('../models/burger.js');
+var burger = require('../models/burger');
 
 
 // GET and render index page with data from burger table
@@ -26,7 +27,7 @@ router.post('/api/burgers', function(req, res) {
 
 // updating a existing burger
 router.put('/api/burgers/:id', function(req, res) {
-    var updateID = req.param.id;
+    var updateID = req.params.id;
     var condition = "id = " + updateID;
 
     burger.updateOne(

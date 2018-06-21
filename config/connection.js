@@ -1,7 +1,7 @@
 
 //connect to our MySQL database
 require("dotenv").config();
-var keys = require("./keys.js");
+var keys = require("./../key");
 var mysql = require("mysql");
 
 var host_name = keys.host.host_name;
@@ -18,6 +18,8 @@ var connection = mysql.createConnection({
   password: database_password,
   database: database_name
 });
+
+
 
 // Make connection.
 connection.connect(function(err) {
