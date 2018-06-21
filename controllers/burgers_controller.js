@@ -1,9 +1,8 @@
 var express = require('express');
-
+// rmiddleware/routing for router object
 var router = express.Router();
 
-// import model
-// var burger = require('../models/burger.js');
+// import model to use for database functions.
 var burger = require('../models/burger');
 
 
@@ -21,6 +20,7 @@ router.get('/', function(req, res){
 // POST new burger to database and return new ID
 router.post('/api/burgers', function(req, res) {
     burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], function(result){
+        // retrieve insert id of a new row via .insertId (SQL doc)
         res.json({ id: result.insertId});
     });
 });

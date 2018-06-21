@@ -1,6 +1,6 @@
 var orm = require("../config/orm.js");
 
-
+//Model for data logic of burgers
 var burger = {
     selectAll: function(cb) {
         orm.selectAll("burgers", function(res){
@@ -19,5 +19,5 @@ var burger = {
     }
 };
 
-
+// export for controller
 module.exports = burger;

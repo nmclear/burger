@@ -1,5 +1,5 @@
-
-
+// button click listeners
+// put listeners inside function to make sure DOM is fully loaded.
 $(function(){
     //on click of the yum button, it will change state of devoured boolean.
     $('.change-dev').on('click', function(event){
@@ -47,6 +47,4 @@ $(function(){
             }
         )
     });
-
-
 });

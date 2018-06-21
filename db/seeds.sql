@@ -1,4 +1,4 @@
--- Insert a set of records.
+-- Insert a set of burger records.
 USE burgers_db;
 
 INSERT INTO burgers (burger_name) VALUES ('Rodeo Burger');

@@ -1,23 +1,18 @@
 // MySQL connection
-// var connection = require("../config/connection.js");
 var connection = require('../config/connection');
 
+// helper function for SQL syntax
 function printQuestionMarks(num) {
     var arr = [];
-  
     for (var i = 0; i < num; i++) {
       arr.push("?");
     }
-  
     return arr.toString();
-  }
-
-
+}
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
     var arr = [];
-  
     // loop through the keys and push the key/value as a string int arr
     for (var key in ob) {
       var value = ob[key];
@@ -32,14 +27,13 @@ function objToSql(ob) {
         arr.push(key + "=" + value);
       }
     }
-  
     // translate array of strings to a single comma-separated string
     return arr.toString();
-  }
+}
 
-
+// creating the object to use for all SQL functions.
 var orm = {
-    // selecting all burgers from table.
+    // selecting all burgers from table and return burgers.
     selectAll: function(table, cb){
         var queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString, function(err, result){
@@ -50,7 +44,7 @@ var orm = {
     // inserting a new burger to table.
     insertOne: function(table, cols, vals, cb){
         var queryString = "INSERT INTO " + table;
-
+        // toString returns a string representing the object
         queryString += " (" + cols.toString() + ") ";
         queryString += "VALUES (" + printQuestionMarks(vals.length) + ") ";
 
@@ -73,7 +67,5 @@ var orm = {
     }
 };
 
-
-
-// Export orm object
+// Export for model use
 module.exports = orm;

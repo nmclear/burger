@@ -1,8 +1,10 @@
 
 //connect to our MySQL database
+var mysql = require("mysql");
+
+// Using env and keys to protect database information.
 require("dotenv").config();
 var keys = require("./../key");
-var mysql = require("mysql");
 
 var host_name = keys.host.host_name;
 var port_number = keys.host.port_number;
@@ -10,7 +12,7 @@ var root_user = keys.host.root_user;
 var database_password = keys.database.password;
 var database_name = keys.database.name;
 
-
+// creating database connection.
 var connection = mysql.createConnection({
   host: host_name,
   port: port_number,
@@ -18,8 +20,6 @@ var connection = mysql.createConnection({
   password: database_password,
   database: database_name
 });
-
-
 
 // Make connection.
 connection.connect(function(err) {
@@ -30,5 +30,5 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Export connection for our ORM to use.
+// Export for orm use.
 module.exports = connection;
